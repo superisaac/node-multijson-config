@@ -1,6 +1,6 @@
 {
-  "name": "multijson-coinfig",
-  "version": "0.1.0",
+  "name": "multijson-config",
+  "version": "0.1.1",
   "description": "A smart way to merge multiple json config files into a single config object",
   "main": "flatconfig.js",
   "directories": {
