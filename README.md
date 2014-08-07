@@ -1,4 +1,4 @@
-flatconfig
+multijson-config
 ========
 
 A smart way to merge multile JSON config files/objects into a single config object
