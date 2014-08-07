@@ -1,0 +1,27 @@
+{
+  "name": "multijson-coinfig",
+  "version": "0.1.0",
+  "description": "A smart way to merge multiple json config files into a single config object",
+  "main": "flatconfig.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/superisaac/node-multijson-config.git"
+  },
+  "keywords": [
+    "JSON",
+    "config",
+    "default"
+  ],
+  "author": "zengke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superisaac/node-multijson-config/issues"
+  },
+  "homepage": "https://github.com/superisaac/node-multijson-config"
+}
