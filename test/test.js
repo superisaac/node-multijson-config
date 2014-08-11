@@ -28,4 +28,13 @@ describe('Multijson', function() {
     assert.equal(config.server.host[1], '192.168.2.1');
   });
 
+  it('test config parser', function() {
+    var parser = new multijson.ConfigParser();
+    parser.parseObject({"a.b.c": 7, "a": {"b.d": 8}});
+    assert.equal(parser.config.a.b.c, 7);
+    parser.parseObject({"a": {"b.c": 9}});
+    assert.equal(parser.config.a.b.c, 9);
+    assert.equal(parser.config.a.b.d, 8);
+  });
+
 });

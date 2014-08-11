@@ -50,26 +50,38 @@ function flatternObject(arr, path, data) {
   return arr;
 }
 
-module.exports.parseObjects = function() {
+function ConfigParser() {
+  this.config = {};
+}
+
+ConfigParser.prototype.parseObject = function(obj) {
+  var self = this;
   var arr = [];
+  flatternObject(arr, [], obj);
+  arr.forEach(function(t) {
+    rebuild(self.config, t.path, t.val);
+  });
+};
+
+module.exports.parseObjects = function() {
+  var parser = new ConfigParser();
   for(var i=0; i<arguments.length; i++) {
     var data = arguments[i];
-    flatternObject(arr, [], data);        
+    parser.parseObject(data);
   }
-  var config = {};
-  arr.forEach(function(t) {
-    rebuild(config, t.path, t.val);
-  });
-  return config;
+  return parser.config;
 };
 
 module.exports.parseJSONFiles = function() {
-  var objList = [];
+  var parser = new ConfigParser();
   for(var i=0; i<arguments.length; i++) {
     var fn = arguments[i];
     var data = fs.readFileSync(fn);
     data = JSON.parse(data);
-    objList.push(data);
+    parse.parseObject(data);
   }
-  return module.exports.parseObjects.apply(this, objList);
+  return parser.config;
 };
+
+module.exports.ConfigParser = ConfigParser;
+

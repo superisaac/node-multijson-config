@@ -17,7 +17,7 @@ Examples
 
 ```
 var multijson = require('multijson-config')
-var config = multijson.parseFiles('config.default.json', 'config1.json', 'config2.json')
+var config = multijson.parseJSONFiles('config.default.json', 'config1.json', 'config2.json')
 ```
 
 How it works
