@@ -63,6 +63,12 @@ ConfigParser.prototype.parseObject = function(obj) {
   });
 };
 
+ConfigParser.prototype.parseFile = function(fname) {
+  var data = fs.readFileSync(fname);
+  data = JSON.parse(data)
+  this.parseObject(data);
+};
+
 module.exports.parseObjects = function() {
   var parser = new ConfigParser();
   for(var i=0; i<arguments.length; i++) {
@@ -76,9 +82,7 @@ module.exports.parseJSONFiles = function() {
   var parser = new ConfigParser();
   for(var i=0; i<arguments.length; i++) {
     var fn = arguments[i];
-    var data = fs.readFileSync(fn);
-    data = JSON.parse(data);
-    parse.parseObject(data);
+    parse.parseFile(fn);
   }
   return parser.config;
 };
