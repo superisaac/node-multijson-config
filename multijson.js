@@ -82,7 +82,9 @@ module.exports.parseJSONFiles = function() {
   var parser = new ConfigParser();
   for(var i=0; i<arguments.length; i++) {
     var fn = arguments[i];
-    parse.parseFile(fn);
+    if(fs.existsSync(fn)) {
+      parser.parseFile(fn);
+    }
   }
   return parser.config;
 };

@@ -37,4 +37,9 @@ describe('Multijson', function() {
     assert.equal(parser.config.a.b.d, 8);
   });
 
+  it('should parse config files', function() {
+    var config = multijson.parseJSONFiles('test/conf.json', 'test/conf1.json');
+    assert.equal(config.a, 1);
+  });
+
 });
