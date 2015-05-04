@@ -35,6 +35,7 @@ function rebuild(config, path, val) {
  */
 function flatternObject(arr, path, data) {
   if(data instanceof Array) {
+    arr.push({path: path, val: []});
     data.forEach(function(v, i) {
       flatternObject(arr, path.concat([i]), v);
     });

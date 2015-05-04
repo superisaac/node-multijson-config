@@ -2,13 +2,23 @@ var assert = require('assert');
 var multijson = require('../multijson');
 
 describe('Multijson', function() {
+  it('simple test', function() {
+    var config = {'mc': 1};
+    var parser = new multijson.ConfigParser();
+    parser.parseObject(config);
+
+    var config1 = {'mc': 8};
+    parser.parseObject(config1);
+    console.info('config', parser.config);
+    assert.equal(parser.config.mc, 8);
+  });
+
   var cobj = {
     server: {
       host: 'localhost',
       port: 10008
     }
   };
-
   it('should change the port', function() {
     var config = multijson.parseObjects(cobj,
 					 {
@@ -42,4 +52,10 @@ describe('Multijson', function() {
     assert.equal(config.a, 1);
   });
 
+  it('should replace the old array with shorter new array', function() {
+    var parser = new multijson.ConfigParser();
+    parser.parseObject({"a.b": ["c", {"d": "f"}]});
+    parser.parseObject({"a.b": ["e"]});
+    assert.deepEqual(parser.config.a.b, ["e"]);
+  });
 });

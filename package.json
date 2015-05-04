@@ -1,6 +1,6 @@
 {
   "name": "multijson-config",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A smart way to merge multiple json config files into a single config object",
   "main": "multijson.js",
   "directories": {
